@@ -9,20 +9,21 @@ import 'package:flutter/services.dart';
 
 typedef OnDone = void Function(String text);
 typedef PinBoxDecoration = BoxDecoration Function(
-    Color borderColor,
-    Color pinBoxColor, {
-    double borderWidth,
-    double radius,
-    });
+  Color borderColor,
+  Color pinBoxColor, {
+  double borderWidth,
+  double radius,
+});
 
 /// class to provide some standard PinBoxDecoration such as standard box or underlined
 class ProvidedPinBoxDecoration {
   /// Default BoxDecoration
-  static PinBoxDecoration defaultPinBoxDecoration = (Color borderColor,
-      Color pinBoxColor, {
-        double borderWidth = 2.0,
-        double radius = 5.0,
-      }) {
+  static PinBoxDecoration defaultPinBoxDecoration = (
+    Color borderColor,
+    Color pinBoxColor, {
+    double borderWidth = 2.0,
+    double radius = 5.0,
+  }) {
     return BoxDecoration(
         border: Border.all(
           color: borderColor,
@@ -33,7 +34,8 @@ class ProvidedPinBoxDecoration {
   };
 
   /// Underlined BoxDecoration
-  static PinBoxDecoration underlinedPinBoxDecoration = (Color borderColor,
+  static PinBoxDecoration underlinedPinBoxDecoration = (
+    Color borderColor,
     Color pinBoxColor, {
     double borderWidth = 2.0,
     double? radius,
@@ -358,7 +360,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField> with SingleTickerPro
         focusNode: focusNode,
         controller: widget.controller,
         keyboardType: widget.keyboardType,
-        inputFormatters: widget.keyboardType == TextInputType.number ? <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly] : null,
+        inputFormatters: widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
         style: TextStyle(
           height: 0.1, color: Colors.transparent,
 //          color: Colors.transparent,
@@ -396,7 +398,7 @@ class PinCodeTextFieldState extends State<PinCodeTextField> with SingleTickerPro
         focusNode: focusNode,
         controller: widget.controller,
         keyboardType: widget.keyboardType,
-        inputFormatters: widget.keyboardType == TextInputType.number ? <TextInputFormatter>[WhitelistingTextInputFormatter.digitsOnly] : null,
+        inputFormatters: widget.keyboardType == TextInputType.number ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly] : null,
         style: TextStyle(
           color: Colors.transparent,
         ),

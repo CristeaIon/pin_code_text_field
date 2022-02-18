@@ -128,7 +128,7 @@ class _MyAppState extends State<MyApp> {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(bottom: 60.0),
-                child: Text(thisText, style: Theme.of(context).textTheme.title),
+                child: Text(thisText, style: Theme.of(context).textTheme.bodyText1),
               ),
               Container(
                 height: 100.0,
@@ -139,13 +139,11 @@ class _MyAppState extends State<MyApp> {
                         context: context,
                         builder: (context) {
                           return AlertDialog(
-                            content:
-                                Text("Paste clipboard stuff into the pinbox?"),
+                            content: Text("Paste clipboard stuff into the pinbox?"),
                             actions: <Widget>[
                               FlatButton(
                                   onPressed: () async {
-                                    var copiedText =
-                                        await Clipboard.getData("text/plain");
+                                    var copiedText = await Clipboard.getData("text/plain");
                                     if (copiedText.text.isNotEmpty) {
                                       controller.text = copiedText.text;
                                     }
@@ -164,15 +162,16 @@ class _MyAppState extends State<MyApp> {
                   child: PinCodeTextField(
                     autofocus: true,
                     controller: controller,
-                    hideCharacter: true,
+                    //hideCharacter: true,
                     highlight: true,
                     highlightColor: Colors.blue,
                     defaultBorderColor: Colors.black,
                     hasTextBorderColor: Colors.green,
                     maxLength: pinLength,
                     hasError: hasError,
-                    maskCharacter: "😎",
+                    // maskCharacter: "😎",
                     onTextChanged: (text) {
+                      debugPrint(text);
                       setState(() {
                         hasError = false;
                       });
@@ -185,14 +184,11 @@ class _MyAppState extends State<MyApp> {
                     pinBoxHeight: 64,
                     hasUnderline: true,
                     wrapAlignment: WrapAlignment.spaceAround,
-                    pinBoxDecoration:
-                        ProvidedPinBoxDecoration.defaultPinBoxDecoration,
+                    pinBoxDecoration: ProvidedPinBoxDecoration.defaultPinBoxDecoration,
                     pinTextStyle: TextStyle(fontSize: 22.0),
-                    pinTextAnimatedSwitcherTransition:
-                        ProvidedPinBoxTextAnimation.scalingTransition,
+                    pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
 //                    pinBoxColor: Colors.green[100],
-                    pinTextAnimatedSwitcherDuration:
-                        Duration(milliseconds: 300),
+                    pinTextAnimatedSwitcherDuration: Duration(milliseconds: 300),
 //                    highlightAnimation: true,
                     highlightAnimationBeginColor: Colors.black,
                     highlightAnimationEndColor: Colors.white12,
@@ -328,13 +324,10 @@ class _MyAppState extends State<MyApp> {
                       print("DONE $text");
                     },
                     wrapAlignment: WrapAlignment.end,
-                    pinBoxDecoration:
-                        ProvidedPinBoxDecoration.roundedPinBoxDecoration,
+                    pinBoxDecoration: ProvidedPinBoxDecoration.roundedPinBoxDecoration,
                     pinTextStyle: TextStyle(fontSize: 30.0),
-                    pinTextAnimatedSwitcherTransition:
-                        ProvidedPinBoxTextAnimation.scalingTransition,
-                    pinTextAnimatedSwitcherDuration:
-                        Duration(milliseconds: 300),
+                    pinTextAnimatedSwitcherTransition: ProvidedPinBoxTextAnimation.scalingTransition,
+                    pinTextAnimatedSwitcherDuration: Duration(milliseconds: 300),
                     highlightAnimation: true,
                     highlightAnimationBeginColor: Colors.black,
                     highlightAnimationEndColor: Colors.white12,
